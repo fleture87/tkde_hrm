@@ -1,0 +1,1222 @@
+
+%% bare_jrnl_compsoc.tex
+%% V1.4b
+%% 2015/08/26
+%% by Michael Shell
+%% See:
+%% http://www.michaelshell.org/
+%% for current contact information.
+%%
+%% This is a skeleton file demonstrating the use of IEEEtran.cls
+%% (requires IEEEtran.cls version 1.8b or later) with an IEEE
+%% Computer Society journal paper.
+%%
+%% Support sites:
+%% http://www.michaelshell.org/tex/ieeetran/
+%% http://www.ctan.org/pkg/ieeetran
+%% and
+%% http://www.ieee.org/
+
+%%*************************************************************************
+%% Legal Notice:
+%% This code is offered as-is without any warranty either expressed or
+%% implied; without even the implied warranty of MERCHANTABILITY or
+%% FITNESS FOR A PARTICULAR PURPOSE!
+%% User assumes all risk.
+%% In no event shall the IEEE or any contributor to this code be liable for
+%% any damages or losses, including, but not limited to, incidental,
+%% consequential, or any other damages, resulting from the use or misuse
+%% of any information contained here.
+%%
+%% All comments are the opinions of their respective authors and are not
+%% necessarily endorsed by the IEEE.
+%%
+%% This work is distributed under the LaTeX Project Public License (LPPL)
+%% ( http://www.latex-project.org/ ) version 1.3, and may be freely used,
+%% distributed and modified. A copy of the LPPL, version 1.3, is included
+%% in the base LaTeX documentation of all distributions of LaTeX released
+%% 2003/12/01 or later.
+%% Retain all contribution notices and credits.
+%% ** Modified files should be clearly indicated as such, including  **
+%% ** renaming them and changing author support contact information. **
+%%*************************************************************************
+
+
+% *** Authors should verify (and, if needed, correct) their LaTeX system  ***
+% *** with the testflow diagnostic prior to trusting their LaTeX platform ***
+% *** with production work. The IEEE's font choices and paper sizes can   ***
+% *** trigger bugs that do not appear when using other class files.       ***                          ***
+% The testflow support page is at:
+% http://www.michaelshell.org/tex/testflow/
+
+
+\documentclass[10pt,journal,compsoc]{IEEEtran}
+
+%
+% If IEEEtran.cls has not been installed into the LaTeX system files,
+% manually specify the path to it like:
+% \documentclass[10pt,journal,compsoc]{../sty/IEEEtran}
+
+
+
+
+
+% Some very useful LaTeX packages include:
+% (uncomment the ones you want to load)
+
+
+% *** MISC UTILITY PACKAGES ***
+%
+%\usepackage{ifpdf}
+% Heiko Oberdiek's ifpdf.sty is very useful if you need conditional
+% compilation based on whether the output is pdf or dvi.
+% usage:
+% \ifpdf
+%   % pdf code
+% \else
+%   % dvi code
+% \fi
+% The latest version of ifpdf.sty can be obtained from:
+% http://www.ctan.org/pkg/ifpdf
+% Also, note that IEEEtran.cls V1.7 and later provides a builtin
+% \ifCLASSINFOpdf conditional that works the same way.
+% When switching from latex to pdflatex and vice-versa, the compiler may
+% have to be run twice to clear warning/error messages.
+
+% *** CITATION PACKAGES ***
+%
+\usepackage{amssymb}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+\usepackage{subfigure}
+\usepackage{graphics}
+\usepackage{caption}
+\usepackage{enumerate}
+\usepackage{amsmath}
+\usepackage{caption}
+\usepackage{enumerate}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{amsmath}
+\usepackage{multirow}
+\usepackage{subfigure}
+\usepackage{booktabs}
+\newtheorem{strong}{Definition}
+\ifCLASSOPTIONcompsoc
+  % IEEE Computer Society needs nocompress option
+  % requires cite.sty v4.0 or later (November 2003)
+\usepackage[nocompress]{cite}
+
+\else
+  % normal IEEE
+  \usepackage{cite}
+\fi
+% cite.sty was written by Donald Arseneau
+% V1.6 and later of IEEEtran pre-defines the format of the cite.sty package
+% \cite{} output to follow that of the IEEE. Loading the cite package will
+% result in citation numbers being automatically sorted and properly
+% "compressed/ranged". e.g., [1], [9], [2], [7], [5], [6] without using
+% cite.sty will become [1], [2], [5]--[7], [9] using cite.sty. cite.sty's
+% \cite will automatically add leading space, if needed. Use cite.sty's
+% noadjust option (cite.sty V3.8 and later) if you want to turn this off
+% such as if a citation ever needs to be enclosed in parenthesis.
+% cite.sty is already installed on most LaTeX systems. Be sure and use
+% version 5.0 (2009-03-20) and later if using hyperref.sty.
+% The latest version can be obtained at:
+% http://www.ctan.org/pkg/cite
+% The documentation is contained in the cite.sty file itself.
+%
+% Note that some packages require special options to format as the Computer
+% Society requires. In particular, Computer Society  papers do not use
+% compressed citation ranges as is done in typical IEEE papers
+% (e.g., [1]-[4]). Instead, they list every citation separately in order
+% (e.g., [1], [2], [3], [4]). To get the latter we need to load the cite
+% package with the nocompress option which is supported by cite.sty v4.0
+% and later. Note also the use of a CLASSOPTION conditional provided by
+% IEEEtran.cls V1.7 and later.
+
+
+
+
+
+% *** GRAPHICS RELATED PACKAGES ***
+%
+\ifCLASSINFOpdf
+  % \usepackage[pdftex]{graphicx}
+  % declare the path(s) where your graphic files are
+  % \graphicspath{{../pdf/}{../jpeg/}}
+  % and their extensions so you won't have to specify these with
+  % every instance of \includegraphics
+  % \DeclareGraphicsExtensions{.pdf,.jpeg,.png}
+\else
+  % or other class option (dvipsone, dvipdf, if not using dvips). graphicx
+  % will default to the driver specified in the system graphics.cfg if no
+  % driver is specified.
+  % \usepackage[dvips]{graphicx}
+  % declare the path(s) where your graphic files are
+  % \graphicspath{{../eps/}}
+  % and their extensions so you won't have to specify these with
+  % every instance of \includegraphics
+  % \DeclareGraphicsExtensions{.eps}
+\fi
+% graphicx was written by David Carlisle and Sebastian Rahtz. It is
+% required if you want graphics, photos, etc. graphicx.sty is already
+% installed on most LaTeX systems. The latest version and documentation
+% can be obtained at:
+% http://www.ctan.org/pkg/graphicx
+% Another good source of documentation is "Using Imported Graphics in
+% LaTeX2e" by Keith Reckdahl which can be found at:
+% http://www.ctan.org/pkg/epslatex
+%
+% latex, and pdflatex in dvi mode, support graphics in encapsulated
+% postscript (.eps) format. pdflatex in pdf mode supports graphics
+% in .pdf, .jpeg, .png and .mps (metapost) formats. Users should ensure
+% that all non-photo figures use a vector format (.eps, .pdf, .mps) and
+% not a bitmapped formats (.jpeg, .png). The IEEE frowns on bitmapped formats
+% which can result in "jaggedy"/blurry rendering of lines and letters as
+% well as large increases in file sizes.
+%
+% You can find documentation about the pdfTeX application at:
+% http://www.tug.org/applications/pdftex
+
+
+
+
+
+
+% *** MATH PACKAGES ***
+%
+%\usepackage{amsmath}
+% A popular package from the American Mathematical Society that provides
+% many useful and powerful commands for dealing with mathematics.
+%
+% Note that the amsmath package sets \interdisplaylinepenalty to 10000
+% thus preventing page breaks from occurring within multiline equations. Use:
+%\interdisplaylinepenalty=2500
+% after loading amsmath to restore such page breaks as IEEEtran.cls normally
+% does. amsmath.sty is already installed on most LaTeX systems. The latest
+% version and documentation can be obtained at:
+% http://www.ctan.org/pkg/amsmath
+
+
+
+
+
+% *** SPECIALIZED LIST PACKAGES ***
+%
+%\usepackage{algorithmic}
+% algorithmic.sty was written by Peter Williams and Rogerio Brito.
+% This package provides an algorithmic environment fo describing algorithms.
+% You can use the algorithmic environment in-text or within a figure
+% environment to provide for a floating algorithm. Do NOT use the algorithm
+% floating environment provided by algorithm.sty (by the same authors) or
+% algorithm2e.sty (by Christophe Fiorio) as the IEEE does not use dedicated
+% algorithm float types and packages that provide these will not provide
+% correct IEEE style captions. The latest version and documentation of
+% algorithmic.sty can be obtained at:
+% http://www.ctan.org/pkg/algorithms
+% Also of interest may be the (relatively newer and more customizable)
+% algorithmicx.sty package by Szasz Janos:
+% http://www.ctan.org/pkg/algorithmicx
+
+
+
+
+% *** ALIGNMENT PACKAGES ***
+%
+%\usepackage{array}
+% Frank Mittelbach's and David Carlisle's array.sty patches and improves
+% the standard LaTeX2e array and tabular environments to provide better
+% appearance and additional user controls. As the default LaTeX2e table
+% generation code is lacking to the point of almost being broken with
+% respect to the quality of the end results, all users are strongly
+% advised to use an enhanced (at the very least that provided by array.sty)
+% set of table tools. array.sty is already installed on most systems. The
+% latest version and documentation can be obtained at:
+% http://www.ctan.org/pkg/array
+
+
+% IEEEtran contains the IEEEeqnarray family of commands that can be used to
+% generate multiline equations as well as matrices, tables, etc., of high
+% quality.
+
+
+
+
+% *** SUBFIGURE PACKAGES ***
+%\ifCLASSOPTIONcompsoc
+%  \usepackage[caption=false,font=footnotesize,labelfont=sf,textfont=sf]{subfig}
+%\else
+%  \usepackage[caption=false,font=footnotesize]{subfig}
+%\fi
+% subfig.sty, written by Steven Douglas Cochran, is the modern replacement
+% for subfigure.sty, the latter of which is no longer maintained and is
+% incompatible with some LaTeX packages including fixltx2e. However,
+% subfig.sty requires and automatically loads Axel Sommerfeldt's caption.sty
+% which will override IEEEtran.cls' handling of captions and this will result
+% in non-IEEE style figure/table captions. To prevent this problem, be sure
+% and invoke subfig.sty's "caption=false" package option (available since
+% subfig.sty version 1.3, 2005/06/28) as this is will preserve IEEEtran.cls
+% handling of captions.
+% Note that the Computer Society format requires a sans serif font rather
+% than the serif font used in traditional IEEE formatting and thus the need
+% to invoke different subfig.sty package options depending on whether
+% compsoc mode has been enabled.
+%
+% The latest version and documentation of subfig.sty can be obtained at:
+% http://www.ctan.org/pkg/subfig
+
+
+
+
+% *** FLOAT PACKAGES ***
+%
+%\usepackage{fixltx2e}
+% fixltx2e, the successor to the earlier fix2col.sty, was written by
+% Frank Mittelbach and David Carlisle. This package corrects a few problems
+% in the LaTeX2e kernel, the most notable of which is that in current
+% LaTeX2e releases, the ordering of single and double column floats is not
+% guaranteed to be preserved. Thus, an unpatched LaTeX2e can allow a
+% single column figure to be placed prior to an earlier double column
+% figure.
+% Be aware that LaTeX2e kernels dated 2015 and later have fixltx2e.sty's
+% corrections already built into the system in which case a warning will
+% be issued if an attempt is made to load fixltx2e.sty as it is no longer
+% needed.
+% The latest version and documentation can be found at:
+% http://www.ctan.org/pkg/fixltx2e
+
+
+%\usepackage{stfloats}
+% stfloats.sty was written by Sigitas Tolusis. This package gives LaTeX2e
+% the ability to do double column floats at the bottom of the page as well
+% as the top. (e.g., "\begin{figure*}[!b]" is not normally possible in
+% LaTeX2e). It also provides a command:
+%\fnbelowfloat
+% to enable the placement of footnotes below bottom floats (the standard
+% LaTeX2e kernel puts them above bottom floats). This is an invasive package
+% which rewrites many portions of the LaTeX2e float routines. It may not work
+% with other packages that modify the LaTeX2e float routines. The latest
+% version and documentation can be obtained at:
+% http://www.ctan.org/pkg/stfloats
+% Do not use the stfloats baselinefloat ability as the IEEE does not allow
+% \baselineskip to stretch. Authors submitting work to the IEEE should note
+% that the IEEE rarely uses double column equations and that authors should try
+% to avoid such use. Do not be tempted to use the cuted.sty or midfloat.sty
+% packages (also by Sigitas Tolusis) as the IEEE does not format its papers in
+% such ways.
+% Do not attempt to use stfloats with fixltx2e as they are incompatible.
+% Instead, use Morten Hogholm'a dblfloatfix which combines the features
+% of both fixltx2e and stfloats:
+%
+% \usepackage{dblfloatfix}
+% The latest version can be found at:
+% http://www.ctan.org/pkg/dblfloatfix
+
+
+
+
+%\ifCLASSOPTIONcaptionsoff
+%  \usepackage[nomarkers]{endfloat}
+% \let\MYoriglatexcaption\caption
+% \renewcommand{\caption}[2][\relax]{\MYoriglatexcaption[#2]{#2}}
+%\fi
+% endfloat.sty was written by James Darrell McCauley, Jeff Goldberg and
+% Axel Sommerfeldt. This package may be useful when used in conjunction with
+% IEEEtran.cls'  captionsoff option. Some IEEE journals/societies require that
+% submissions have lists of figures/tables at the end of the paper and that
+% figures/tables without any captions are placed on a page by themselves at
+% the end of the document. If needed, the draftcls IEEEtran class option or
+% \CLASSINPUTbaselinestretch interface can be used to increase the line
+% spacing as well. Be sure and use the nomarkers option of endfloat to
+% prevent endfloat from "marking" where the figures would have been placed
+% in the text. The two hack lines of code above are a slight modification of
+% that suggested by in the endfloat docs (section 8.4.1) to ensure that
+% the full captions always appear in the list of figures/tables - even if
+% the user used the short optional argument of \caption[]{}.
+% IEEE papers do not typically make use of \caption[]'s optional argument,
+% so this should not be an issue. A similar trick can be used to disable
+% captions of packages such as subfig.sty that lack options to turn off
+% the subcaptions:
+% For subfig.sty:
+% \let\MYorigsubfloat\subfloat
+% \renewcommand{\subfloat}[2][\relax]{\MYorigsubfloat[]{#2}}
+% However, the above trick will not work if both optional arguments of
+% the \subfloat command are used. Furthermore, there needs to be a
+% description of each subfigure *somewhere* and endfloat does not add
+% subfigure captions to its list of figures. Thus, the best approach is to
+% avoid the use of subfigure captions (many IEEE journals avoid them anyway)
+% and instead reference/explain all the subfigures within the main caption.
+% The latest version of endfloat.sty and its documentation can obtained at:
+% http://www.ctan.org/pkg/endfloat
+%
+% The IEEEtran \ifCLASSOPTIONcaptionsoff conditional can also be used
+% later in the document, say, to conditionally put the References on a
+% page by themselves.
+
+
+
+
+% *** PDF, URL AND HYPERLINK PACKAGES ***
+%
+%\usepackage{url}
+% url.sty was written by Donald Arseneau. It provides better support for
+% handling and breaking URLs. url.sty is already installed on most LaTeX
+% systems. The latest version and documentation can be obtained at:
+% http://www.ctan.org/pkg/url
+% Basically, \url{my_url_here}.
+
+
+
+
+
+% *** Do not adjust lengths that control margins, column widths, etc. ***
+% *** Do not use packages that alter fonts (such as pslatex).         ***
+% There should be no need to do such things with IEEEtran.cls V1.6 and later.
+% (Unless specifically asked to do so by the journal or conference you plan
+% to submit to, of course. )
+
+
+% correct bad hyphenation here
+\hyphenation{op-tical net-works semi-conduc-tor}
+
+
+\begin{document}
+%
+% paper title
+% Titles are generally capitalized except for words such as a, an, and, as,
+% at, but, by, for, in, nor, of, on, or, the, to and up, which are usually
+% not capitalized unless they are the first or last word of the title.
+% Linebreaks \\ can be used within to get better formatting as desired.
+% Do not put math or special symbols in the title.
+\title{HRM: Hierarchical Representation Model for Next Basket Recommendation}
+%
+%
+% author names and IEEE memberships
+% note positions of commas and nonbreaking spaces ( ~ ) LaTeX will not break
+% a structure at a ~ so this keeps an author's name from being broken across
+% two lines.
+% use \thanks{} to gain access to the first footnote area
+% a separate \thanks must be used for each paragraph as LaTeX2e's \thanks
+% was not built to handle multiple paragraphs
+%
+%
+%\IEEEcompsocitemizethanks is a special \thanks that produces the bulleted
+% lists the Computer Society journals use for "first footnote" author
+% affiliations. Use \IEEEcompsocthanksitem which works much like \item
+% for each affiliation group. When not in compsoc mode,
+% \IEEEcompsocitemizethanks becomes like \thanks and
+% \IEEEcompsocthanksitem becomes a line break with idention. This
+% facilitates dual compilation, although admittedly the differences in the
+% desired content of \author between the different types of papers makes a
+% one-size-fits-all approach a daunting prospect. For instance, compsoc
+% journal papers have the author affiliations above the "Manuscript
+% received ..."  text while in non-compsoc journals this is reversed. Sigh.
+
+\author{Michael~Shell,~\IEEEmembership{Member,~IEEE,}
+        John~Doe,~\IEEEmembership{Fellow,~OSA,}
+        and~Jane~Doe,~\IEEEmembership{Life~Fellow,~IEEE}% <-this % stops a space
+\IEEEcompsocitemizethanks{\IEEEcompsocthanksitem M. Shell was with the Department
+of Electrical and Computer Engineering, Georgia Institute of Technology, Atlanta,
+GA, 30332.\protect\\
+% note need leading \protect in front of \\ to get a newline within \thanks as
+% \\ is fragile and will error, could use \hfil\break instead.
+E-mail: see http://www.michaelshell.org/contact.html
+\IEEEcompsocthanksitem J. Doe and J. Doe are with Anonymous University.}% <-this % stops an unwanted space
+\thanks{Manuscript received April 19, 2005; revised August 26, 2015.}}
+
+% note the % following the last \IEEEmembership and also \thanks -
+% these prevent an unwanted space from occurring between the last author name
+% and the end of the author line. i.e., if you had this:
+%
+% \author{....lastname \thanks{...} \thanks{...} }
+%                     ^------------^------------^----Do not want these spaces!
+%
+% a space would be appended to the last name and could cause every name on that
+% line to be shifted left slightly. This is one of those "LaTeX things". For
+% instance, "\textbf{A} \textbf{B}" will typeset as "A B" not "AB". To get
+% "AB" then you have to do: "\textbf{A}\textbf{B}"
+% \thanks is no different in this regard, so shield the last } of each \thanks
+% that ends a line with a % and do not let a space in before the next \thanks.
+% Spaces after \IEEEmembership other than the last one are OK (and needed) as
+% you are supposed to have spaces between the names. For what it is worth,
+% this is a minor point as most people would not even notice if the said evil
+% space somehow managed to creep in.
+
+
+
+% The paper headers
+\markboth{Journal of \LaTeX\ Class Files,~Vol.~14, No.~8, August~2015}%
+{Shell \MakeLowercase{\textit{et al.}}: Bare Demo of IEEEtran.cls for Computer Society Journals}
+% The only time the second header will appear is for the odd numbered pages
+% after the title page when using the twoside option.
+%
+% *** Note that you probably will NOT want to include the author's ***
+% *** name in the headers of peer review papers.                   ***
+% You can use \ifCLASSOPTIONpeerreview for conditional compilation here if
+% you desire.
+
+
+
+% The publisher's ID mark at the bottom of the page is less important with
+% Computer Society journal papers as those publications place the marks
+% outside of the main text columns and, therefore, unlike regular IEEE
+% journals, the available text space is not reduced by their presence.
+% If you want to put a publisher's ID mark on the page you can do it like
+% this:
+%\IEEEpubid{0000--0000/00\$00.00~\copyright~2015 IEEE}
+% or like this to get the Computer Society new two part style.
+%\IEEEpubid{\makebox[\columnwidth]{\hfill 0000--0000/00/\$00.00~\copyright~2015 IEEE}%
+%\hspace{\columnsep}\makebox[\columnwidth]{Published by the IEEE Computer Society\hfill}}
+% Remember, if you use this you must call \IEEEpubidadjcol in the second
+% column for its text to clear the IEEEpubid mark (Computer Society jorunal
+% papers don't need this extra clearance.)
+
+
+
+% use for special paper notices
+%\IEEEspecialpapernotice{(Invited Paper)}
+
+
+
+% for Computer Society papers, we must declare the abstract and index terms
+% PRIOR to the title within the \IEEEtitleabstractindextext IEEEtran
+% command as these need to go into the title area created by \maketitle.
+% As a general rule, do not put math, special symbols or citations
+% in the abstract or keywords.
+\IEEEtitleabstractindextext{%
+\begin{abstract}
+Next basket recommendation is a crucial task in market basket analysis. Given a user's purchase history, usually a sequence of transaction data, one attempts to build a recommender that can predict the next few items that the user most probably would like. Ideally, a good recommender should be able to explore the sequential behavior (i.e., buying one item leads to buying another next), as well as account for users' general taste (i.e., ~what items a user is typically interested in) for recommendation. Moreover, these two factors may interact with each other to influence users' next purchase. To tackle the above problems, in this paper, we introduce a novel recommendation approach, namely hierarchical representation model (HRM).
+HRM can well capture both sequential behavior and users' general taste by involving transaction and user representations in prediction. Meanwhile, the flexibility of applying different aggregation operations, especially nonlinear operations, on representations allows us to model complicated interactions among different factors. Theoretically, we show that our model subsumes several existing methods when choosing proper aggregation operations. Empirically, we demonstrate that our model can consistently outperform the state-of-the-art baselines under different evaluation metrics on real-world transaction data.
+\end{abstract}
+
+% Note that keywords are not normally used for peerreview papers.
+\begin{IEEEkeywords}
+Computer Society, IEEE, IEEEtran, journal, \LaTeX, paper, template.
+\end{IEEEkeywords}}
+
+
+% make the title area
+\maketitle
+
+
+% To allow for easy dual compilation without having to reenter the
+% abstract/keywords data, the \IEEEtitleabstractindextext text will
+% not be used in maketitle, but will appear (i.e., to be "transported")
+% here as \IEEEdisplaynontitleabstractindextext when the compsoc
+% or transmag modes are not selected <OR> if conference mode is selected
+% - because all conference papers position the abstract like regular
+% papers do.
+\IEEEdisplaynontitleabstractindextext
+% \IEEEdisplaynontitleabstractindextext has no effect when using
+% compsoc or transmag under a non-conference mode.
+
+
+
+% For peer review papers, you can put extra information on the cover
+% page as needed:
+% \ifCLASSOPTIONpeerreview
+% \begin{center} \bfseries EDICS Category: 3-BBND \end{center}
+% \fi
+%
+% For peerreview papers, this IEEEtran command inserts a page break and
+% creates the second title. It will be ignored for other modes.
+\IEEEpeerreviewmaketitle
+
+
+
+\IEEEraisesectionheading{\section{Introduction}\label{sec:introduction}}
+% Computer Society journal (but not conference!) papers do something unusual
+% with the very first section heading (almost always called "Introduction").
+% They place it ABOVE the main text! IEEEtran.cls does not automatically do
+% this for you, but you can achieve this effect with the provided
+% \IEEEraisesectionheading{} command. Note the need to keep any \label that
+% is to refer to the section immediately after \section in the above as
+% \IEEEraisesectionheading puts \section within a raised box.
+Market basket analysis helps retailers gain a better understanding of users' purchase behavior which can lead to better decisions. One of its most important tasks is next basket recommendation \cite{workshop_prob_pref,case_basket,binaryBasket,paps}. In this task, usually sequential transaction data is given per user, where a transaction is a set/basket of items (e.g.~shoes or bags) bought at one point of time. The target is to recommend items that the user probably want to buy in his/her next visit.
+
+Typically, there are two modeling paradigms for this problem. One is sequential recommender~\cite{Chen2012,Srikant1996s}, mostly relying on Markov chains, which explores the sequential transaction data by predicting the next purchase based on the last actions. A major advantage of this model is its ability to capture sequential behavior for good recommendations, e.g. for a user who has recently bought a mobile phone, it may recommend accessories that other users have bought after buying that phone.
+%However, the limitation of sequential recommender is that it usually ignores users' general taste due to the limited recommendation context (i.e.~recent purchases).
+The other is general recommender \cite{next,fpmc}, which discards any sequential information and learns what items a user is typically interested in. One of the most successful methods in this class is the model based collaborative filtering (i.e.~matrix factorization models). Obviously, such general recommender is good at capturing the general taste of the user by learning over the user's whole purchase history.
+%it loses the ability to adapt the recommendation directly to the recent purchase (e.g.~the mobile phone).
+
+A better solution for next basket recommendation, therefore, is to take both sequential behavior and users' general taste into consideration. One step towards this direction is the factorizing personalized Markov chains (FPMC) model proposed by Steffen Rendle et al.~\cite{fpmc}. FPMC can model both sequential behavior (by interaction between items in the last transaction and that in the next basket) and users' general taste (by interaction between the user and the item in the next basket), thus achieves better performance than either sequential or general recommender alone.
+However, a major problem of FPMC is that all the components are linearly combined, indicating that it makes strong independent assumption among multiple factors (i.e.~each component influence users' next purchase independently).
+
+Unfortunately, from our analysis, we show that the independent assumption is not sufficient for good recommendations.
+
+To tackle the above problems, we introduce a novel hierarchical representation model (HRM) for next basket recommendation.
+Specifically, HRM represents each user and item as a vector in continuous space, and employs a two-layer structure to construct a hybrid representation over user and items from last transaction: The first layer forms the transaction representation by aggregating item vectors from last transaction; While the second layer builds the hybrid representation by aggregating the user vector and the transaction representation. The resulting hybrid representation is then used to predict the items in the next basket.
+%in HRM each user and item is mapped to a unique vector in a continuous space.
+%Item vectors from last transaction are first aggregated to form the transaction representation. The transaction representation is further aggregated with user vector, and the resulting vector is used to predict the items in the next basket.
+Note here the transaction representation involved in recommendation models the sequential behavior, while the user representation captures the general taste in recommendation.
+
+HRM allows us to flexibly use different types of aggregation operations at different layers.
+%, i.e.~aggregation between sequential and general factors as well as that among items forming the transaction representation.
+Especially, by employing nonlinear rather than linear operations, we can model more complicated interactions among different factors beyond independent assumption. For example, by using a max pooling operation, features from each factor are compared and only those most significant are selected to form the higher level representation for future prediction.
+% when constructing higher level representations.
+%In our work, we introduce two types of aggregation operators, i.e.~average pooling and max pooling, and study different combinations of these operators.
+We also show that by choosing proper aggregation operations, HRM subsumes several existing methods including markov chain model, matrix factorization model as well as a variation of FPMC model. For learning the model parameters, we employ the negative sampling procedure \cite{mikolov2013} as the optimization method.
+
+We conducted experiments over three real-world transaction datasets. The empirical results demonstrated the effectiveness of our approach as compared with the state-of-the-art baseline methods.
+
+In total the contributions of our work are as follows:
+ \begin{itemize}
+ \item We introduce a general model for next basket recommendation which can capture both sequential behavior and users' general taste, and flexibly incorporate different interactions among multiple factors.
+ \item We introduce two types of aggregation operations, i.e.~average pooling and max pooling, into our hierarchical model and study the effect of different combinations of these operations.
+ \item Theoretically we show that our model subsumes several existing recommendation methods when choosing proper aggregation operations.
+ \item Empirically we show that our model, especially with nonlinear operations, can consistently outperform state-of-the-art baselines under different evaluation metrics on next basket recommendation.
+ \end{itemize}
+
+
+
+% The very first letter is a 2 line initial drop letter followed
+% by the rest of the first word in caps (small caps for compsoc).
+%
+% form to use if the first word consists of a single letter:
+% \IEEEPARstart{A}{demo} file is ....
+%
+% form to use if you need the single drop letter followed by
+% normal text (unknown if ever used by the IEEE):
+% \IEEEPARstart{A}{}demo file is ....
+%
+% Some journals put the first two words in caps:
+% \IEEEPARstart{T}{his demo} file is ....
+%
+% Here we have the typical use of a "T" for an initial drop letter
+% and "HIS" in caps to complete the first word.
+\IEEEPARstart{T}{his} demo file is intended to serve as a ``starter file''
+for IEEE Computer Society journal papers produced under \LaTeX\ using
+IEEEtran.cls version 1.8b and later.
+% You must have at least 2 lines in the paragraph with the drop letter
+% (should never be an issue)
+I wish you the best of success.
+
+\hfill mds
+
+\hfill August 26, 2015
+
+\section{Related Work}
+Next basket recommendation is a typical application of recommender systems based on implicit feedback, where no explicit preferences (e.g.~ratings) but only positive observations (e.g.~purchases or clicks) are available \cite{collaborative_improved,workshop_prob_pref}. These positive observations are usually in a form of sequential data as obtained by passively tracking users' behavior over a sequence of time, e.g.~a retail store records the transactions of customers. In this section, we briefly review the related work on recommendation with implicit feedback from the following three aspects, i.e.~sequential recommender, general recommender, and the hybrid model.
+
+\textbf{Sequential recommender}, mainly based on a Markov chain model, utilizes sequential data by predicting users' next action given the last actions \cite{sequential_suvery}. For example, Zimdar et al.~\cite{zimdar2001} propose a sequential recommender based on Markov chains, and investigate how to extract sequential patterns to learn the next state using probablistic decision-tree models. Mobasher et al.~\cite{Mobasher2002} study different sequential patterns for recommendation and find that contiguous sequential patterns are more suitable for sequential prediction task than general sequential patterns. Ghim-Eng Yap et al.~\cite{Yap2012} introduce a new Competence Score measure in personalized sequential pattern mining for next-items recommendation. Shani et al.~\cite{Shani2002} present a recommender based on Markov decision processes and show that a predictive Markov Chain model is effective for next basket prediction. Chen et al.~\cite{Chen2012} model playlists as a Markov chain, and propose logistic Markov Embedding to learn the representations of songs for playlist prediction. The main difference of our work to all the previous approaches is the inclusion of users' general taste in recommendation beyond sequential behavior. Besides, the previous sequential recommenders seldom address the interactions among items in sequential factors.
+
+\textbf{General recommender}, in contrast, does not take sequential behavior into account but recommends based on users' whole purchase history. The key idea is collaborative filtering (CF) which can be further categorized into memory-based CF and model-based CF \cite{next,Su2009}. The memory-based CF provides recommendations by finding k-nearest-neighbour of users or products based on certain similarity measure \cite{amazon}. While the model-based CF tries to factorize the user-item correlation matrix for recommendation.
+%The model-based approach tries to find a low-rank approximation of the customer-product rating matrix, and uses the values in the approximated matrix to recommend products\cite{Su2009}. As an example of model-based approach, matrix factorization is gaining rising attention in both explicit and implicit feedback applications such as Netflix\cite{Koren2008,Koren2010}.
+For example, Lee et al.~\cite{binaryBasket} treat the market basket data as a binary user-item matrix, and apply a binary logistic regression model based on principal component analysis (PCA) for recommendation. Hu et al.~\cite{Hu2008} conduct the factorization on user-item pairs with least-square optimization and use pair confidence to control the importance of observations. Pan et al.~\cite{Pan2009} also introduce the weights to user-item pairs, and optimize the factorization with both least-square and hinge-loss criteria. Rendle et al~. \cite{bpr} propose a different optimization criterion, namely Bayesian personalized ranking, which directly optimizes for correctly ranking over item pairs instead of scoring single items. They apply this method to matrix factorization and adaptive KNN to show its effectiveness. General recommender is good at capturing users' general taste, but can hardly adapt its recommendations directly to users' recent purchases without modeling sequential behavior.
+
+\textbf{Hybrid model}, tries to integrate both sequential behavior and users' general taste for a better recommendation. A state-of-the-art method is the FPMC model proposed by Rendle et al.~\cite{fpmc}. In their work, a transition cube is constructed where each entry of the cube gives the probability of a user buying next item given he has bought a certain item in the last transaction. By factorizing this cube, they interpret this probability by three pairwise interactions among user, items in the last transaction and items in the next basket. In this way, FPMC models sequential behavior by interaction between items in the last transaction and that in the next basket, as well as users' general taste by interaction between the user and the item in the next basket. It has been shown that such a hybrid model can achieve better performance than either a sequential or general recommender alone.
+
+\begin{figure*}[htbp]
+\centering
+\includegraphics[scale=0.33,viewport=40 80 1300 460,clip=true]{linear.eps}
+\caption{\label{fig:linear}Next basket recommendation by linear combination of sequential and general factors. The numbers above the movie denote the recommendation scores produced by the recommender.}
+\end{figure*}
+
+\section{Motivation}
+Next basket recommendation is the task of predicting what a user most probably would like to buy next when his/her sequential transaction data is given. When tackling this problem, both the sequential and general recommender have their own advantages. The sequential recommender can fully explore the  sequential transaction data to discover the correlation between items in consequent purchases, leading to very responsive recommendation according to users' recent purchase. While the general recommender can leverage users' whole purchase histories to learn the taste of different users, and thus achieve better personalization in recommendation.
+
+As shown in previous work \cite{fpmc}, it is better to take both sequential and general factors into account for better recommendation. A simple solution is to use a linear combination over these two factors. Furthermore, when modeling the sequential factor, items in the last transaction are often linearly combined in predicting the next item \cite{fpmc}. Obviously, one major assumption underlying these linear combinations is the independence among multiple factors. That is, both sequential and general factor influence the next purchase independently, and each item in the last transaction influence the next purchase independently as well. Here comes the question: Is the independent assumption among multiple factors sufficient for good recommendation?
+
+%\subsection{Beyond Independent Assumption} let us first take a look at an example shown in Figure \ref{fig:linear}.
+To answer the above question, we first consider the independent assumption between the general and sequential factors. Let us take a look at an example shown in Figure~\ref{fig:linear}. Imagine a user in general buys science fiction movies like `The Matrix' and `X-men'. In contrast to his usual buying behavior, he recently has become fascinated in Scarlett Johansson and purchased `Match Point' to watch. A sequential recommender based on recent purchase would recommend movies like `Lost in Translation' (0.9) and `Girl with a Pearl Earring' (0.85), which are also dramas performed by Scarlett Johansson. (Note that the number in the parentheses denotes the recommendation score). In contrast, a general recommender which mainly accounts for user's general taste would recommend `The Dark Knight' (0.95) and `Inception' (0.8) and other science fiction movies. By taking into account both factors, good recommendations for the user might be the movies like `Lucy' and `The Avengers', which are science fiction movies performed by Scarlett Johansson. However, if we linearly combine the two factors, i.e.~independent in prediction, we may not obtain the right results as we expected.
+%What we will obtain may be just a mixed list of top movies from these two individual factors.
+The reason lies in that a good recommendation under joint consideration of the two factors may not obtain a high recommendation score when calculating from each individual factor. For example, the scores of `Lucy' (0.3) and `The Avengers' (0.2) in sequential recommender are low since they do not match well with the genre preference (i.e.~drama) based on the last purchase of the user. Their scores are also not very high in general recommender since there are many better and popular movies fitting the science fiction taste. Thus the linear combination cannot boost the good recommendations to the top.
+
+
+Let us take a further look at sequential factor alone, i.e.~recommending next items based on the last transaction. For example, people who have bought pumpkin will probably buy other vegetables like cucumber or tomato next, while people who have bought candy will probably buy other snacks like chocolate or chips next. However, people who have bought pumpkin and candy together will very probably buy Halloween costumes next. Again, we can see that if we simply combine the recommendation results from pumpkin and candy respectively, we may not be able to obtain the right recommendations.
+
+From the above examples, we find that models based on linear combination do have limitations in capturing complicated influence of multiple factors on next purchase. In other words, independent assumption among different factors may not be sufficient for good recommendations. We need a model that is capable of incorporating more complicated interactions among multiple factors. This becomes the major motivation of our work.
+
+\section{Our Approach}
+In this section, we first introduce the problem formalization of next basket recommendation. We then describe the proposed HRM in detail. After that, we talk about the learning and prediction procedure of HRM. Finally, we discuss the connections of HRM to existing methods.
+
+\subsection{Formalization}
+Let $U=\{u_1,u_2,\ldots,u_{|U|}\}$ be a set of users and $I=\{i_1,i_2,\ldots,i_{|I|}\}$ be a set of items, where $|U|$ and $|I|$ denote the total number of unique users and items, respectively. For each user $u$, a purchase history $T^u$ of his transactions is given by $T^u:=(T^u_1,T^u_2,\ldots,T^u_{t_u-1} )$, where $T^u_t \subseteq I$, $t\in [1,t_u-1]$. The purchase history of all users is denoted as $T:=\{T^{u_1},T^{u_2},\ldots,T^{u_{|U|}} \}$.
+Given this history, the task is to recommend items that user $u$ would probably buy at the next (i.e.~$t_u$-th) visit.
+%Note here we do not deal with absolute time points (e.g.~April 12th, 2014), but with relative ones regarding a user, e.g.~the first, second, etc. transaction of a user \cite{fpmc}.
+The next basket recommendation task can then be formalized as creating a personalized total ranking $>_{u,t}\subset I^2$ for user $u$ and $t_u$-th transaction. With this ranking, we can recommend the top $n$ items to the user.
+
+\subsection{HRM Model}
+To solve the above recommendation problem, here we present the proposed HRM in detail. The basic idea of our work is to learn a recommendation model that can involve both sequential behavior and users' general taste, and meanwhile modeling complicated interactions among these factors in prediction.
+
+Specifically, HRM represents each user and item as a vector in a continuous space, and employs a two-layer structure to construct a hybrid representation over user and items from last transaction: The first layer forms the transaction representation by aggregating item vectors from last transaction; While the second layer builds the hybrid representation by aggregating the user vector and the transaction representation. The resulting hybrid representation is then used to predict the items in the next basket. The hierarchical structure of HRM is depicted in Figure \ref{fig:hrm}. As we can see, HRM captures the sequential behavior by modeling the consecutive purchases, i.e.~constructing the representation of the last transaction from its items for predicting the next purchase. At the same time, by integrating a personalized user representation in sequential recommendation, HRM also models the user's general taste.
+
+\begin{figure}[t]
+\centering
+\includegraphics[scale=0.5,viewport=100 180 550 450,clip=true]{model.eps}
+\caption{\label{fig:hrm}The HRM model architecture. A two-layer structure is employed to construct a hybrid representation over user and items from last transaction, which is used to predict the next purchased items.}
+\end{figure}
+
+More formally, let $V^U=\{\vec{v}^U_u\in {R}^n|u\in U\}$ denote all the user vectors and $V^I=\{\vec{v}^I_i\in \mathbb{R}^n|i\in I\}$ denote all the item vectors. Note here $V^U$ and $V^I$ are model parameters to be learned by HRM. Given a user $u$ and two consecutive transactions $T^u_{t-1}$ and $T^u_t$, HRM defines the probability of buying next item $i$ given user $u$ and his/her last transaction $T^u_{t-1}$ via a softmax function:
+%\begin{displaymath}
+%  \sum_{i\in T^u_t}\log p(i\in T^u_t|u,T^u_{t-1})
+%\end{displaymath}
+%
+%The prediction task is done via a softmax function:
+\begin{equation}
+    \label{eq:softmax}
+  p(i\in T^u_t|u,T^u_{t-1})=\frac{exp(\vec{v}^I_i\cdot\vec{v}^{Hybrid}_{u,t-1})}{\sum_{j=1}^{|I|}exp(\vec{v}^I_j\cdot\vec{v}^{Hybrid}_{u,t-1})}
+\end{equation}
+where $\vec{v}^{Hybrid}_{u,t-1}$ denotes the hybrid representation obtained from the hierarchical aggregation which is defined as follows
+\begin{displaymath}
+\vec{v}^{Hybrid}_{u,t-1}:=f_2(\vec{v}^U_u,f_1(\vec{v}^I_{l}\in T^u_{t-1}))
+\end{displaymath}
+where $f_1(\cdot)$ and $f_2(\cdot)$ denote the aggregation operation at the first and second layer, respectively.
+%$\vec{v}^{Hybrid}_{u,t-1}$ denotes the hybrid representation obtained from the hierarchical aggregation of user vector $\vec{v}^U_u$ and item vectors from $(t-1)$-th transaction $T^u_{t_u-1}$.
+
+One advantage of HRM is that we can introduce various aggregation operations in forming higher level representation from lower level. In this way, we can model different interactions among multiple factors at different layers, i.e.~interaction among items forming the transaction representation at the first layer, as well as interaction between user and transaction representations at the second layer. In this work, we study two typical aggregation operations as follows.
+ \begin{itemize}
+ \item \textit{average pooling}: To aggregate a set of vector representations, average pooling construct one vector by taking the average value of each dimension. Let $V=\{\vec{v}_l\in \mathbb{R}^n|l=1,\ldots,|V|\}$ be a set of input vectors to be aggregated, average pooling over $V$ can be formalized as
+      \begin{displaymath}
+        f_{avg}(V)=\frac{1}{|V|}\sum_{l=1}^{|V|} \vec{v}_l
+     \end{displaymath}
+     Obviously, average pooling is a linear operation, which assumes the independence among input representations in forming higher level representation.
+ \item \textit{max pooling}: To aggregate a set of vector representations, max pooling constructs one vector by taking the maximum value of each dimension, which can be formalized as
+     \begin{displaymath}
+        f_{max}(V) = \left[ \begin{smallmatrix} max(\vec{v}_1[1],\ldots,\vec{v}_{|V|}[1])\\ max(\vec{v}_1[2],\ldots,\vec{v}_{|V|}[2])\\\vdots\\max(\vec{v}_1[n],\ldots,\vec{v}_{|V|}[n]) \end{smallmatrix} \right]
+        \end{displaymath}
+        where $\vec{v}_l[k]$ denotes the $k$-th dimension in $\vec{v}_l$.
+        In Contrary to average pooling, max pooling is a nonlinear operation which models interactions among input representations, % in forming higher level representation,
+        i.e.~features from each input vector are compared and only those most significant features will be selected to the next level.
+        Take the movie recommender mentioned in Section 3.1 for example, we suppose vector representations are used for both sequential and general factors. If there are two dimensions capturing the genre and actor/actress preference respectively, max pooling then selects the most significant feature in each dimension (e.g.~science fiction and Scarlett Johansson) in aggregating the two vectors.
+ \end{itemize}
+Note that there are other ways to define the aggregation operations, e.g.~top-k average pooling or Hadamard product. We may study these operations in the future work. Besides, one may also consider to introduce nonlinear hidden layers as in deep neural network \cite{Arisoy2012}. However, we resort to simple models since previous work has demonstrated that such models can learn accurate representations from very large data set due to low computational complexity \cite{efficent,mikolov2013}.
+
+Since there are two-layer aggregations in HRM, we thus can obtain four versions of HRM based on different combinations of operations, namely HRM$_{AvgAvg}$, HRM$_{MaxAvg}$, HRM$_{AvgMax}$, and HRM$_{MaxMax}$, where the two abbreviations in subscript denote the first and second layer aggregation operation respectively. For example, HRM$_{AvgMax}$ denotes the model that employs average pooling at the first layer and max pooling at second layer.
+
+As we can see, these four versions of HRM actually assume different strength of interactions among multiple factors. By only using average pooling, HRM$_{AvgAvg}$ assume independence among all the factors. We later show that HRM$_{AvgAvg}$ can be viewed as some variation of FPMC. Both HRM$_{AvgMax}$ and HRM$_{MaxAvg}$ introduce partial interactions, either among the items in last transaction or between the user and transaction representations. Finally, by using nonlinear operations at both layers, HRM$_{MaxMax}$ assumes full interactions among all the factors.
+
+\subsection{Learning and Prediction}
+In learning, HRM maximizes the log probability defined in Equation (\ref{eq:softmax}) over the transaction data of all users as follows
+\begin{displaymath}
+\ell_{HRM} = \sum_{u\in U}\sum_{T^u_t\in T^u} \sum_{i\in T^u_t}\log p(i\in T^u_t|u,T^u_{t-1}) -\lambda\|\Theta\|^2_F
+\end{displaymath}
+%where $p(i\in T^u_t|u,T^u_{t-1})$ denotes the buying probability of next item $i$ given user $u$ and his/her last transaction $T^u_{t-1}$,
+where $\lambda$ is the regularization constant and $\Theta$ are the model parameters (i.e.~$\Theta\!\!=\!\!\{V^U\!,\!V^I\}$). As defined in Section 4.1, the goal of next basket recommendation is to derive a ranking $>_{u,t}$ over items. HRM actually defines the ranking as
+\begin{displaymath}
+i>_{u,t}i' :\Leftrightarrow p(i\in T^u_t|u,T^u_{t-1}) > p(i'\in T^u_t|u,T^u_{t-1})
+\end{displaymath}
+and attempts to derive such ranking by maximizing the buying probability of next items over the whole purchase history.
+
+However, directly optimizing the above objective function is impractical because the cost of computing the full softmax is proportional to the size of items $|I|$, which is often extremely large. Therefore, we adopt the negative sampling technique \cite{mikolov2014,mikolov2013} for efficient optimization, which approximates the original objective $\ell_{HRM}$ with the following objective function
+\begin{displaymath}
+    \begin{aligned}
+  \ell_{NEG} &= \sum_{u\in U}\sum_{T^u_t\in T^u} \sum_{i\in T^u_t}\Big( \log\sigma(\vec{v}^I_i\cdot\vec{v}^{Hybrid}_{u,t-1})+k\cdot \mathbb{E}_{i'\sim P_I}[\log\sigma(-\vec{v}^I_{i'}\cdot\vec{v}^{Hybrid}_{u,t-1})]\Big) -\lambda\|\Theta\|^2_F\\
+   \end{aligned}
+\end{displaymath}
+%where $\sigma$ is the logistic sigmoid:\\
+%\begin{displaymath}
+%    \sigma(x)=\frac{1}{1+e^{-x}}
+%\end{displaymath}
+where $\sigma(x)=1/(1+e^{-x})$, $k$ is the number of ``negative'' samples, and $i'$ is the sampled item, drawn according to the noise distribution $P_I$ which is modeled by empirical unigram distribution over items. As we can see, the objective of HRM with negative sampling aims to derive the ranking $>_{u,t}$ in a discriminative way by maximizing the probability of observed item $i$ and meanwhile minimizing the probability of unobserved item $i'$s.
+
+We then apply stochastic gradient descent algorithm to maximize the new objective function for learning the model. Moreover, when learning the nonlinear models, we also adopt Dropout technique to avoid overfitting. In our work, we simply set a fixed drop ratio ($50\%$) for each unit.
+
+With the learned user and item vectors, the next basket recommendation with HRM is as follows. Given a user $u$ and his/her last transaction $T_{t_u-1}^u$, for each candidate item $i\in I$, we calculate the probability $p(i\in I|u,T^u_{t_u-1})$ according to Equation (\ref{eq:softmax}). We than rank the items according to their probabilities, and select the top $n$ results as the final recommendations to the user.
+
+\subsection{Connection to Previous Models}
+In this section, we discuss the connection of the proposed HRM to previous work. We show that by choosing proper aggregation operations, HRM subsumes several existing methods including Markov chain model, matrix factorization model as well as a variation of FPMC model.
+
+\subsubsection{HRM vs. Markov Chain Model}
+To show that HRM can be reduced to a certain type of Markov chain model, we first introduce a special aggregation operation, namely select-copy operation. When aggregating a set of vector representations, the select-copy operation select one of the vectors according to some criterion, and copy it as the aggregated one.
+Now we apply this operation to both levels of HRM. Specifically, when constructing the transaction representation from item vectors, the operation randomly selects one item vector and copies it. When combining the user and transaction representations, the operation always selects and copies the transaction vector. We refer the HRM with this model architecture as HRM$_{CopyItem}$. The new objective function of HRM$_{CopyItem}$ using negative sampling is as follows:
+\begin{displaymath}
+    \begin{aligned}
+  \ell_{CopyItem} &= \sum_{u\in U}\sum_{T^u_t\in T^u} \sum_{i\in T^u_t}\Big( \log\sigma(\vec{v}^I_i\cdot\vec{v}^I_s)\\
+        &+k\cdot \mathbb{E}_{i'\sim P_I}[\log\sigma(-\vec{v}^I_{i'}\cdot\vec{v}^I_s)]\Big) -\lambda\|\Theta\|^2_F\\
+   \end{aligned}
+\end{displaymath}
+where $\vec{v}^I_s$ denotes the vector of randomly selected item in last transaction.
+
+Similar as the derivation in \cite{mikolov2014}, we can show that the solution of HRM$_{CopyItem}$ follows that
+\begin{displaymath}
+\vec{v}^I_i\cdot\vec{v}^I_s=PMI(v^I_i,v^I_s)-\log k
+\end{displaymath}
+which indicates that HRM$_{CopyItem}$ is actually a factorized Markov chain model (FMC) \cite{fpmc}, which factorizes a transition matrix between items from two consecutive transactions with the association measured by \textit{shifted PMI} (i.e.~$PMI(x,y)-\log k$). When $k=1$, the transition matrix becomes a PMI matrix.
+
+In fact, if we employ noise contrastive estimation \cite{mikolov2013} for optimization, the solution then follows that:
+\begin{displaymath}
+\vec{v}^I_i\cdot\vec{v}^I_s=\log P(v^I_i|v^I_s)-\log k
+\end{displaymath}
+which indicates the transition matrix factorized by HRM$_{CopyItem}$ become a (shifted) log-conditional-probability matrix.
+
+\begin{table*}[htbp]
+\small
+\centering
+\caption{Statistics of the datasets used in our experiments.}\label{t:t1}
+\begin{tabular}{cccccc}
+\toprule
+ dataset& users $|U|$& items $|I|$& transactions $T$&avg.transaction size& avg.transaction per user\\
+\midrule
+Ta-Feng &   9238 &   7982 &  67964&  7.4&  5.9\\ %\hline
+BeiRen & 9321& 5845& 91294&   9.7&5.8\\ %\hline
+T-Mall & 292& 191& 1805&    5.6&1.2\\ %\hline
+\bottomrule
+\end{tabular}
+\end{table*}
+
+\subsubsection{HRM vs. Matrix Factorization Model}
+Now we only apply the select-copy operation to the second layer (i.e.~aggregation over user and transaction representations), and this time we always select and copy user vector. We refer this model as HRM$_{CopyUser}$. The corresponding objective function using negative sampling is as follows:
+\begin{displaymath}
+    \begin{aligned}
+  \ell_{CopyUser} &= \sum_{u\in U}\sum_{T^u_t\in T^u} \sum_{i\in T^u_t}\Big( \log\sigma(\vec{v}^I_i\cdot\vec{v}^U_u)\\
+        &+k\cdot \mathbb{E}_{i'\sim P_I}[\log\sigma(-\vec{v}^I_{i'}\cdot\vec{v}^U_u)]\Big) -\lambda\|\Theta\|^2_F\\
+   \end{aligned}
+\end{displaymath}
+
+Again, we can show that HRM$_{CopyUser}$ has the solution in the following form:
+\begin{displaymath}
+\vec{v}^U_u\cdot\vec{v}^I_i=PMI(v^U_u,v^I_i)-\log k
+\end{displaymath}
+
+In this way, HRM$_{CopyUser}$ reduces to a matrix factorization model, which factorizes a user-item matrix where the association between a user and a item is measured by shifted PMI.
+
+\subsubsection{HRM vs. FPMC}
+FPMC conducts a tensor factorization over the transition cube constructed from the transition matrices of all users. It is optimized under the Bayesian personalized ranking (BPR) criterion and the objective function using MAP-estimator is as follows \cite{fpmc}:
+%FPMC method is a tensor factorization model, with each tensor representing the feature matrix for users, feature matrix for items in the last transaction, and the feature matrix for items to predict. The MAP-estimator of FMPC is:\\
+\begin{equation}\label{eq:fpmcloss}
+\!\!\ell_{FPMC}\!=\!\!\!\sum_{u\in U}\!\sum_{T^u_t\in T^u}\!\sum_{i\in T^u_t}\!\sum_{i'\not\in T^u_t}\!\log\sigma(\hat{x}_{u,t,i}-\hat{x}_{u,t,i'}) -\!\!\lambda\!\!\parallel\!\!\Theta\!\!\parallel^2_F
+\end{equation}
+
+where $\hat{x}_{u,t,i}$ denotes the prediction model
+\begin{eqnarray}\label{eq:hat}
+    \hat{x}_{u,t,i} &:=& \hat{p}(i\in T^u_t|u,T^u_{t-1})\nonumber\\
+    &:=&\vec{v}^U_u\cdot\vec{v}^I_i+\frac{1}{|T^u_{t-1}|}\sum_{l\in T^u_{t-1}}(\vec{v}^I_i\cdot\vec{v}^I_l)
+\end{eqnarray}
+
+To see the connection between HRM and FPMC, we now set the aggregation operation as average pooling at both layers and apply negative sampling with $k=1$. We denote this model as HRM$_{AvgAvgNEG1}$ and its objective function is as follows
+\begin{eqnarray}\label{eq:avgavgneg1}
+  \ell_{AvgAvgNEG1} &=& \sum_{u\in U}\sum_{T^u_t\in T^u} \sum_{i\in T^u_t}\Big( \log\sigma(\vec{v}^I_i\cdot\vec{v}^{Hybrid}_{u,t-1})\nonumber\\
+        &&+\mathbb{E}_{i'\sim P_I}[\log\sigma(-\vec{v}^I_{i'}\cdot\vec{v}^{Hybrid}_{u,t-1})]\Big) -\lambda\|\Theta\|^2_F\nonumber\\
+        &=& \sum_{u\in U}\sum_{T^u_t\in T^u} \sum_{i\in T^u_t}\sum_{i'\not\in T^u_t}\Big( \log\sigma(\vec{v}^I_i\cdot\vec{v}^{Hybrid}_{u,t-1})\nonumber\\
+        &&+\log\sigma(-\vec{v}^I_{i'}\cdot\vec{v}^{Hybrid}_{u,t-1})\Big) -\lambda\|\Theta\|^2_F
+\end{eqnarray}
+where
+\begin{equation}\label{eq:agg}
+\vec{v}^{Hybrid}_{u,t-1}=\frac{1}{2}(\vec{v}^U_u+\frac{1}{|T^u_{t-1}|}\sum_{l\in T^u_{t-1}}\vec{v}^I_l)
+\end{equation}
+
+With Equation (\ref{eq:hat}) and (\ref{eq:agg}), we can rewrite Equation (\ref{eq:avgavgneg1}) as follows
+\begin{eqnarray}\label{eq:avgloss}
+    \ell_{AvgAvgNEG1}\!\!\!\!&=&\!\!\!\!\sum_{u\in U}\sum_{T^u_t\in T^u}\sum_{i\in T^u_t}\sum_{i'\not\in T^u_t}\Big(\log\sigma(\hat{x}_{u,t,i})\nonumber\\
+    \!\!\!\!&&\!\!\!\!+\log\sigma(-\hat{x}_{u,t,i'})\Big)-\lambda\parallel\Theta\parallel^2_F + C\nonumber\\
+    \!\!\!\!&=&\!\!\!\!\sum_{u\in U}\sum_{T^u_t\in T^u}\sum_{i\in T^u_t}\sum_{i'\not\in T^u_t}\Big(\log\sigma(\hat{x}_{u,t,i})\nonumber\\
+    \!\!\!\!&&\!\!\!\!+\log(1-\sigma(\hat{x}_{u,t,i'}))\Big)-\lambda\parallel\Theta\parallel^2_F + C
+\end{eqnarray}
+
+Based on the above derivations, we can see that both HRM$_{AvgAvgNEG1}$ and FPMC share the same prediction model denoted by Equation (\ref{eq:hat}), but optimize with slightly different criteria. FPMC tries to maximize the pairwise rank, i.e.~an observed item $i$ ranks higher than an unobserved item $i'$, by defining the pairwise probability using a logistic function as shown in Equation (\ref{eq:fpmcloss}). While HRM$_{AvgAvgNEG1}$ also optimizes this pairwise rank by maximizing the probability of item $i$ and minimizing the probability of item $i'$, each defined in a logistic form as shown in Equation (\ref{eq:avgloss}). In fact, we can also adopt BPR criterion to define the objective function of HRM$_{AvgAvg}$, and obtain the same model as FPMC.
+
+Based on all the above analysis, we can see that the proposed HRM is actually a very general model. By introducing different aggregation operations, we can produce multiple recommendation models well connected to existing methods. Moreover, HRM also allows us to explore other prediction functions as well as optimization criteria, showing large flexibility and promising potential.
+
+
+\begin{table*}[htbp]
+\scriptsize
+\center
+\caption{Performance comparison among four versions of HRM over three datasets}\label{t:t2}
+\subtable[Performance comparison on Ta-Feng]{
+\begin{tabular}{ccccccccccccc}
+\toprule
+\multirow{2}{*}{Models}        & \multicolumn{3}{c}{d=50}      & \multicolumn{3}{c}{d=100}     & \multicolumn{3}{c}{d=150}      & \multicolumn{3}{c}{d=200}     \\
+                                  &  \multicolumn{3}{c}{F1-score  Hit-ratio NDCG }  & \multicolumn{3}{c}{F1-score  Hit-ratio NDCG }  & \multicolumn{3}{c}{F1-score  Hit-ratio NDCG }   & \multicolumn{3}{c}{F1-score  Hit-ratio NDCG }  \\
+\midrule
+HRM$_{AvgAvg}$                       & 0.051    &   0.240     & 0.073 & 0.060    & 0.276     & 0.082 & 0.063    & 0.283     & 0.080  & 0.063    & 0.286     & 0.086 \\
+HRM$_{MaxAvg}$                      & 0.059    & 0.275     & 0.080 & 0.064    & 0.279     & 0.087 & 0.065    & 0.290     & 0.083  & 0.067    & 0.298     &  0.086     \\
+HRM$_{AvgMax}$                       & 0.057    & 0.262     & 0.080 & 0.064    & 0.288     & 0.085 & 0.065    & 0.289     & 0.082  & 0.068    & 0.293     & 0.090 \\
+HRM$_{MaxMax}$ & \textbf{0.062}    & \textbf{0.282}     & \textbf{0.089} & \textbf{0.065}    & \textbf{0.293}     & \textbf{0.088} & \textbf{0.068}    & \textbf{0.298}     & \textbf{0.085} & \textbf{0.070}    & \textbf{0.312}    & \textbf{0.093} \\
+ \bottomrule
+\end{tabular}
+}
+\subtable[Performance comparison on BeiRen]{
+\begin{tabular}{ccccccccccccc}
+\toprule
+\multirow{2}{*}{Models}        & \multicolumn{3}{c}{d=50}      & \multicolumn{3}{c}{d=100}     & \multicolumn{3}{c}{d=150}      & \multicolumn{3}{c}{d=200}     \\
+                                  &  \multicolumn{3}{c}{F1-score  Hit-ratio NDCG }  & \multicolumn{3}{c}{F1-score  Hit-ratio NDCG }  & \multicolumn{3}{c}{F1-score  Hit-ratio NDCG }   & \multicolumn{3}{c}{F1-score  Hit-ratio NDCG }  \\
+\midrule
+%\multirow{2}{*}{Models} & \multicolumn{3}{c|}{d=50}      & \multicolumn{3}{c|}{d=100}     & \multicolumn{3}{c|}{d=150}     & \multicolumn{3}{c}{d=200}     \\ \cline{2-13}
+%                           & F1-score & Hit-ratio & NDCG  & F1-score & Hit-ratio & NDCG  & F1-score & Hit-ratio & NDCG  & F1-score & Hit-Ratio & NDCG  \\ \hline
+HRM$_{AvgAvg}$                     & 0.100    & 0.463     & 0.119 & 0.107    & 0.475     & 0.128 &0.112          &0.505          &0.137       &0.113          &0.509           &0.137       \\
+HRM$_{MaxAvg}$                     & 0.105    & 0.485     & 0.131 & 0.113    & 0.498     & 0.138 & 0.115    & 0.509     & 0.139 & 0.115    & 0.505     & 0.141 \\ %\hline
+HRM$_{AvgMax}$                     & 0.106    & 0.494     &0.131 &0.114     & 0.512     &0.140  &0.115     &0.510      &0.141       &0.115          &0.510           &0.140       \\
+HRM$_{MaxMax}$                     & \textbf{0.111}    &\textbf{ 0.501}    & \textbf{0.134} & \textbf{0.115}    & \textbf{0.515}     & \textbf{0.144} & \textbf{0.117}    & \textbf{0.516}     & \textbf{0.146} & \textbf{0.118}    & \textbf{0.515}     & \textbf{0.145} \\
+ \bottomrule
+\end{tabular}
+}
+\subtable[Performance comparison on T-Mall]{
+\begin{tabular}{ccccccccccccc}
+\toprule
+\multirow{2}{*}{Models}        & \multicolumn{3}{c}{d=10}      & \multicolumn{3}{c}{d=15}     & \multicolumn{3}{c}{d=20}      & \multicolumn{3}{c}{d=25}     \\
+                                  &  \multicolumn{3}{c}{F1-score  Hit-ratio NDCG }  & \multicolumn{3}{c}{F1-score  Hit-ratio NDCG }  & \multicolumn{3}{c}{F1-score  Hit-ratio NDCG }   & \multicolumn{3}{c}{F1-score  Hit-ratio NDCG }  \\
+\midrule
+%\multirow{2}{*}{Models} & \multicolumn{3}{c|}{d=10}      & \multicolumn{3}{c|}{d=15}     & \multicolumn{3}{c|}{d=20}     & \multicolumn{3}{c}{d=25}     \\ \cline{2-13}
+ %                          & F1-score & Hit-ratio & NDCG  & F1-score & Hit-ratio & NDCG  & F1-score & Hit-ratio & NDCG  & F1-score & Hit-Ratio & NDCG  \\ \hline
+HRM$_{AvgAvg}$                     & 0.052    & 0.154     & 0.119 & 0.055    & 0.139     & 0.146 & 0.061    & 0.180     & 0.146 & 0.063    & 0.186     & 0.151 \\ %\hline
+HRM$_{MaxAvg}$                     & 0.062    & 0.186     & 0.133 & 0.063    & 0.148     & 0.157 & 0.066    & 0.196     & 0.154 & 0.068    & 0.202     & 0.158 \\ %\hline
+HRM$_{AvgMax}$                     & 0.061    & 0.186     & 0.133 & 0.063    & 0.148     & 0.153 & 0.064    & 0.191     & 0.157 & 0.066    & 0.196     & 0.159 \\ %\hline
+HRM$_{MaxMax}$                    & \textbf{0.065}    & \textbf{0.191}     & \textbf{0.142} & \textbf{0.066}    & \textbf{0.197}     & \textbf{0.163} & \textbf{0.070}    & \textbf{0.207}     & \textbf{0.163} & \textbf{0.071}    & \textbf{0.212}     & \textbf{0.168} \\ %\hline
+ \bottomrule
+\end{tabular}
+}
+\end{table*}
+\section{DHM}
+git hub
+As we can see, DHM proposed a method to design users` interests to make personalization, by integrating users` long-term interest and users` short-term interest, however, DHM only concerns users` short-term interest in consecutive transactions, thus it may faces sparse problem, in addition, it fails to captures users` long dependency interest.
+Designing and maintaining users` interests to make personalization is real a challenge.
+However, existing works typically fails to effectively capture such information. They tend to use a static profile to describe user. However user interests are not static, changing with time and context. To our best knowledge, non work has attempted to handle the dynamics within the user profile. The purchase behaviors of users vary over time , and it should affect the construction of users` interests. A good recommender system should be able to adapt to the user`s behavior when this changes For example...
+However in real world system, it is usually observed that user preferences may dynamically drift over time, thus a static modeling of users taht treats the historical purchases as fixed and long-term effective may be appropriate to track users` interests.
+The entire model is trained end-to-end with stochastic gradient decent,
+\section{Evaluation}
+In this section, we conduct empirical experiments to demonstrate the effectiveness of our proposed HRM on next basket recommendation. We first introduce the dataset, baseline methods, and the evaluation metrics employed in our experiments. Then we compare the four versions of HRM to study the effect of different combinations of aggregation operations. After that, we compare our HRM to the state-of-the-art baseline methods to demonstrate its effectiveness. Finally, we conduct some analysis on our optimization procedure, i.e.~negative sampling technique.
+
+\subsection{Dataset}
+We evaluate different recommenders based on three real-world transaction datasets, i.e.~two retail datasets Ta-Feng and BeiRen, and one e-commerce dataset T-Mall.
+
+\begin{itemize}
+\item The Ta-Feng\footnote{http://recsyswiki.com/wiki/Grocery\_shopping\_datasets} dataset is a public dataset released by RecSys conference, which covers products from food, office supplies to furniture. It contains $817,741$ transactions belonging to $32,266$ users and $23,812$ items.
+\item The BeiRen dataset comes from BeiGuoRenBai\footnote{http://www.brjt.cn/}, a large retail enterprise in China, which records its supermarket purchase history during the period from Jan.~2013 to Sept.~2013. It contains $1,123,754$ transactions belonging to $34,221$ users and $17,920$ items.
+\item The T-Mall\footnote{http://102.alibaba.com/competition/addDiscovery/index.htm} dataset is a public online e-commerce dataset released by Taobao\footnote{http://www.taobao.com}, which records the online transactions in terms of brands. It contains $4298$ transactions belonging to $884$ users and $9,531$ brands.
+\end{itemize}
+
+We first conduct some pre-process on these transaction datasets similar as \cite{fpmc}. For both Ta-Feng and BeiRen dataset, we remove all the items bought by less than $10$ users and users that has bought in total less than $10$ items. For the T-Mall dataset, which is relatively smaller, we remove all the items bought by less than $3$ users and users that has bought in total less than $3$ items. The statistics of the three datasets after pre-processing are shown in Table \ref{t:t1}.
+
+Finally, we split all the datasets into two non overlapping set, i.e.~a training set and a testing set. The testing set contains only the last transaction of each user, while all the remaining transactions are put into the training set.
+
+\subsection{Baseline Methods}
+We evaluate our model by comparing with several state-of-the-art methods on next-basket recommendation:
+
+\begin{itemize}
+    \item TOP: The top popular items in training set are taken as recommendations for each user.
+    \item MC: A Markov chain model (i.e.~sequential recommender) which predicts the next purchase based on the last transaction of the user. The prediction model is as follows:
+        \begin{displaymath}
+        p(i\in T^u_{t_u}|T^u_{t_u-1}):=\frac{1}{|T^u_{t_u-1}|}\sum_{l\in T^u_{t_u-1}}p(i\in T^u_{t_u}|l\in T^u_{t_u-1})
+        \end{displaymath}
+        The transition probability of buying an item based on the last purchase is estimated from the training set.
+    \item NMF: A state-of-the-art model based collaborative filtering method \cite{Lee2001}. Here Nonnegative Matrix Factorization is applied over the user-item matrix, which is constructed from the transaction dataset by discarding the sequential information. For implementation, we adopt the publicly available codes from NMF:DTU Toolbox\footnote{http://cogsys.imm.dtu.dk/toolbox/nmf/}.
+    \item FPMC: A state-of-the-art hybrid model on next basket recommendation \cite{fpmc}. Both sequential behavior and users' general taste are taken into account for prediction.
+\end{itemize}
+
+For NMF, FPMC and our HRM\footnote{http://www.bigdatalab.ac.cn/benchmark/bm/bd?code=HRM} methods, we run several times with random initialization by setting the dimensionality $d\in\{50, 100, 150, 200\}$ on Ta-Feng and BeiRen datasets, and $d\in\{10, 15, 20, 25\}$ on T-Mall dataset. We compare the best results of different methods and demonstrate the results in the following sections.
+
+
+\begin{figure*}[t]
+\centering
+\hspace*{1cm}\includegraphics[scale=0.225,viewport=5 0 1800 1500,clip=true]{performance.eps}
+\caption{\label{fig:performance}Performance comparison of HRM among TOP,MC,NMF, and FPMC over three datasets. The dimensionality is increased from 50 to 200 on Ta-Feng and BeiRen, and 10 to 25 on T-Mall.}
+\end{figure*}
+
+\subsection{Evaluation Metrics}
+The performance is evaluated for each user $u$ on the transaction $T^u_{t_u}$ in the testing dataset. For each recommendation method, we generate a list of $N$ items ($N$=$5$) for each user $u$, denoted by $R(u)$, where $R_i(u)$ stands for the item recommended in the $i$-th position. We use the following quality measures to evaluate the recommendation lists against the actual bought items.
+\begin{itemize}
+    \item F1-score: F1-score is the harmonic mean of precision and recall, which is a widely used measure in recommendation \cite{Godoy2005,Lin2002,fpmc}:\\
+ \begin{displaymath}
+ \text{Precison}(T^u_{t_u},R(u))=\frac{|T^u_{t_u}\bigcap R(u)|}{|R(u)|}
+\end{displaymath}
+\begin{displaymath}
+\text{Recall}(T^u_{t_u},R(u))=\frac{|T^u_{t_u}\bigcap R(u)|}{|T^u_{t_u}|}
+\end{displaymath}
+\begin{displaymath}
+\text{F1-score}=\frac{2\times \text{Precision}\times \text{Recall}}{\text{Precision}+\text{Recall}}
+\end{displaymath}
+    \item Hit-Ratio: Hit-Ratio is a All-but-One measure used in recommendation \cite{Karypis2001,Xiang2010}. If there is at least one item in the test transaction also appears in the recommendation list, we call it a \textit{hit}. The Hit-Ratio is calculated in the following way:\\
+            \begin{displaymath}
+            \text{Hit-Ratio}=\frac{\sum_{u\in U}I(T^u_{t_u}\bigcap R(u)\neq \phi)}{|U|}
+            \end{displaymath}
+    where $I(\cdot)$ is an indicator function and $\phi$ denotes the empty set. Hit-Ratio focuses on the \textit{recall} of a recommender system, i.e.~how many people can obtain at least one correct recommendation.
+    \item NDCG@$k$: Normalized Discounted Cumulative Gain (NDCG) is a ranking based measure which takes into account the order of recommended
+items in the list\cite{Jaervelin2000}, and is formally given by:\\
+    \begin{displaymath}
+    NDCG@k=\frac{1}{N_k}\sum_{j=1}^k\frac{2^{I(R_j(u)\in T^u_{t_u})}-1}{log_2(j+1)}
+    \end{displaymath}
+    where $I(\cdot)$ is an indicator function and $N_k$ is a constant which denotes the maximum value of NDCG@k given $R(u)$.
+\end{itemize}
+
+\begin{figure*}[t]
+\centering
+\includegraphics[scale=0.35,viewport=50 550 400 800,clip=true]{negtafeng.eps}
+\includegraphics[scale=0.35,viewport=50 550 400 800,clip=true]{negbeiren.eps}
+\includegraphics[scale=0.35,viewport=50 550 400 800,clip=true]{negtaobao.eps}
+\caption{\label{fig:neg}Performance variation in terms of F1-score against the number of negative samples over three datasets with HRM$_{MaxMax}$. The number of negative samples is increased from 1 to 25 on Ta-Feng, 10 to 60 on BeiRen, and from 1 to 6 on T-Mall.}
+\end{figure*}
+
+\subsection{Comparison among Different HRMs}
+We first empirically compare the performance of the four versions of HRM, referred to as HRM$_{AvgAvg}$, HRM$_{MaxAvg}$, HRM$_{AvgMax}$, HRM$_{MaxMax}$. The results over three datasets are shown in Table \ref{t:t2}.
+
+As we can see, HRM$_{AvgAvg}$, which only uses average pooling operations in aggregation, performs the worst among the four models. It indicates that by assuming independence among all the factors, we may not be able to learn a good recommendation model. Both HRM$_{MaxAvg}$ and HRM$_{AvgMax}$ introduce partial interactions by using max pooling either at the first or the second layer, and obtain better results than HRM$_{AvgAvg}$. Take the Ta-Feng dataset as an example, when compared with HRM$_{AvgAvg}$ with dimensionality set as $50$, the relative performance improvement by HRM$_{MaxAvg}$ and HRM$_{AvgMax}$ is around $13.6\%$ and $9.8\%$, respectively. Besides, we also find that there is no consistent dominant between these two partial-interaction models, indicating that interactions at different layers may both help the recommendation in their own way. Finally, by applying max pooling at both layers (i.e.~full interactions), HRM$_{MaxMax}$ can outperform the other three variations in terms of all the three evaluation measures. The results demonstrate the advantage of modeling interactions among multiple factors in next basket recommendation.
+
+\subsection{Comparison against Baselines}
+We further compare our HRM model to the state-of-the-art baseline methods on next basket recommendation. Here we choose the best performed HRM$_{MaxMax}$ as the representative for clear comparison. The performance results over Ta-Feng, BeiRen, and T-Mall are shown in Figure \ref{fig:performance}.
+
+
+We have the following observations from the results. (1) Overall, the Top method is the weakest.
+However, we find that the Top method outperforms MC on the T-Mall dataset. This might be due to the fact that the items in T-Mall dataset are actually brands. Therefore, the distributions of top popular brands on both training and testing datasets are very close, which accords with the assumption of the Top method and leads to better performance. (2) The NMF method outperforms the MC method in most cases. A major reason might be that the transition matrix estimated in the MC method are rather sparse, and directly using it for recommendation may not work well. One way to improve the performance of the MC method is to factorize the transition matrix to alleviate the sparse problem \cite{fpmc}. (3) By combining both sequential behavior and users' general taste, FPMC can obtain better results than both MC and NMF. This result is quite consistent with the previous finding in \cite{fpmc}. (4) By further introducing the interactions among multiple factors, the proposed HRM$_{MaxMax}$ can consistently outperform all the baseline methods in terms of all the measures over the three datasets. Take the Ta-Feng dataset as an example, when compared with second best performed baseline method (i.e.~FPMC) with dimensionality set as $200$, the relative performance improvement by HRM$_{MaxMax}$ is around $13.1\%$, $11.1\%$, and $12.5\%$ in terms of F1-score, Hit-Ratio and NDCG@5, respectively.
+
+\begin{table}[tbp]
+\scriptsize
+\caption{Performance comparison on Ta-Feng over different user groups with dimensionality set as $50$.}\label{t:t3}
+\begin{tabular}{c|cccc}
+\toprule
+user \\activeness                                                               & method & F1-score & Hit-Ratio & NDCG@5  \\
+\midrule
+\multirow{5}{*}{\begin{tabular}[c]{@{}c@{}}Inactive\\ \end{tabular}} & Top    & 0.036    & 0.181     & 0.054 \\
+                                                                              & MC     & 0.042    & 0.206     & 0.058 \\
+                                                                              & NMF    & 0.037    & 0.198     & 0.046 \\
+                                                                              & FPMC   & 0.043    & 0.216     & 0.060 \\
+                                                                              & HRM$_{MaxMax}$    & \textbf{0.048}    & \textbf{0.236}     & \textbf{0.062} \\
+\midrule
+\multirow{5}{*}{\begin{tabular}[c]{@{}c@{}}Medium\\ \end{tabular}}      & Top    & 0.051    & 0.230     & 0.084 \\ %\cline{2-5}
+                                                                              & MC     & 0.059    & 0.262     & 0.088 \\
+                                                                              & NMF    & 0.052    & 0.234     & 0.072 \\
+                                                                              & FPMC   & 0.059    & 0.263     & 0.087 \\
+                                                                              & HRM$_{MaxMax}$    & \textbf{0.068}    & \textbf{0.299}     & \textbf{0.097} \\
+\midrule
+\multirow{5}{*}{\begin{tabular}[c]{@{}c@{}}Active\\ \end{tabular}}     & Top    & 0.045    & 0.207     & 0.074 \\
+                                                                              & MC     & 0.050    & 0.212     & 0.075 \\
+                                                                              & NMF    & 0.056    & 0.223     & 0.075 \\
+                                                                              & FPMC   & 0.054    & 0.224     & 0.080 \\
+                                                                              & HRM$_{MaxMax}$    & \textbf{0.062}    & \textbf{0.246}     & \textbf{0.087} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+To further investigate the performance of different methods, we split the users into three groups (i.e., inactive, medium and active) based on their activeness and conducted the comparisons on different user groups. Take the Ta-Feng dataset as an example, a user is taken as inactive if there are less than $5$ transactions in his/her purchase history, and active if there are more than $20$ transactions in the purchase history. The remaining users are taken as medium. In this way, the proportions of inactive, medium and active are $40.8\%$, $54.5\%$, and $4.7\%$ respectively. Here we only report the comparison results on Ta-Feng dataset under one dimensionality (i.e.~$d=50$) due to the page limitation. In fact, similar conclusions can be drawn from other datasets. The results are shown in Table \ref{t:t3}.
+
+From the results we can see that, not surprisingly, the Top method is still the worst on all the groups. Furthermore, we find that MC works better than NMF on both inactive and medium users in terms of all the measures; While on active users, NMF can achieve better performance than MC. The results indicate that it is difficult for NMF to learn a good user representation with few transactions for recommendation. By combining both sequential behavior and users' general taste linearly, FPMC obtains better performance than MC on inactive and active users, and performs better than NMF on inactive and medium users. However, we can see the improvements are not very consistent on different user groups. Finally, HRM$_{MaxMax}$ can achieve the best performance on all the groups in terms of all the measures. It demonstrates that modeling interactions among multiple factors can help generate better recommendations for different types of users.
+
+\subsection{The Impact of Negative Sampling}
+To learn the proposed HRM, we employ negative sampling procedure for optimization. One parameter in this procedure is the number of negative samples we draw each time, denoted by $k$. Here we investigate the impact of the sampling number $k$ on the final performance. Since the item size is different over the three datasets, we tried different ranges of $k$ accordingly. Specifically, we tried $k\in \{1,5,10,15,20,25\}$ on Ta-Feng, $k\in \{10,20,30,40,50,60\}$ on BeiRen, and $k\in \{1,2,3,4,5,6\}$ on T-Mall, respectively. We report the test performance of HRM$_{MaxMax}$ in terms of F1-score against the number of negative samples over the three datasets in Figure \ref{fig:neg}. Here we only show the results on one dimension over each dataset (i.e.~$d=50$ on Ta-Feng and BeiRen and $d=10$ on T-Mall) due to the space limitation.
+
+From the results we find that: (1) As the sampling number $k$ increases, the test performance in terms of F1-score increases too. The trending is quite consistent over the three datasets. (2) As the sampling number $k$ increases, the performance gain between two consecutive trials decreases. For example, on Ta-Feng dataset, when we increase $k$ from $20$ to $25$, the relative performance improvement in terms of F1-score is about $0.0011\%$. It indicates that if we continue to sample more negative samples, there will be less performance improvement but larger computational complexity. Therefore, in our performance comparison experiments, we set $k$ as $25$, $60$, $6$ on Ta-Feng, BeiRen and T-Mall, respectively.
+
+\section{Conclusion}
+In this paper, we propose a novel hierarchical representation model (HRM) to predict what users will buy in next basket. Our model can well capture both sequential behavior and users' general taste in recommendation. What is more important is that HRM allows us to model complicated interactions among multiple factors by using different  aggregation operations over the representations of these factors. We conducted experiments on three real-world transaction datasets, and demonstrated that our approach can outperform all the state-of-the-art baseline methods consistently under different evaluation metrics.
+
+For the future work, we would like to try other aggregation operations in our HRM. We also want to analyze what kind of interactions are really effective in next basket prediction. Moreover, we would like to study how to integrate other types of information into our model, e.g.~the transaction timestamp, which may introduce even more complicated interactions with the existing factors.
+
+
+% An example of a floating figure using the graphicx package.
+% Note that \label must occur AFTER (or within) \caption.
+% For figures, \caption should occur after the \includegraphics.
+% Note that IEEEtran v1.7 and later has special internal code that
+% is designed to preserve the operation of \label within \caption
+% even when the captionsoff option is in effect. However, because
+% of issues like this, it may be the safest practice to put all your
+% \label just after \caption rather than within \caption{}.
+%
+% Reminder: the "draftcls" or "draftclsnofoot", not "draft", class
+% option should be used if it is desired that the figures are to be
+% displayed while in draft mode.
+%
+%\begin{figure}[!t]
+%\centering
+%\includegraphics[width=2.5in]{myfigure}
+% where an .eps filename suffix will be assumed under latex,
+% and a .pdf suffix will be assumed for pdflatex; or what has been declared
+% via \DeclareGraphicsExtensions.
+%\caption{Simulation results for the network.}
+%\label{fig_sim}
+%\end{figure}
+
+% Note that the IEEE typically puts floats only at the top, even when this
+% results in a large percentage of a column being occupied by floats.
+% However, the Computer Society has been known to put floats at the bottom.
+
+
+% An example of a double column floating figure using two subfigures.
+% (The subfig.sty package must be loaded for this to work.)
+% The subfigure \label commands are set within each subfloat command,
+% and the \label for the overall figure must come after \caption.
+% \hfil is used as a separator to get equal spacing.
+% Watch out that the combined width of all the subfigures on a
+% line do not exceed the text width or a line break will occur.
+%
+%\begin{figure*}[!t]
+%\centering
+%\subfloat[Case I]{\includegraphics[width=2.5in]{box}%
+%\label{fig_first_case}}
+%\hfil
+%\subfloat[Case II]{\includegraphics[width=2.5in]{box}%
+%\label{fig_second_case}}
+%\caption{Simulation results for the network.}
+%\label{fig_sim}
+%\end{figure*}
+%
+% Note that often IEEE papers with subfigures do not employ subfigure
+% captions (using the optional argument to \subfloat[]), but instead will
+% reference/describe all of them (a), (b), etc., within the main caption.
+% Be aware that for subfig.sty to generate the (a), (b), etc., subfigure
+% labels, the optional argument to \subfloat must be present. If a
+% subcaption is not desired, just leave its contents blank,
+% e.g., \subfloat[].
+
+
+% An example of a floating table. Note that, for IEEE style tables, the
+% \caption command should come BEFORE the table and, given that table
+% captions serve much like titles, are usually capitalized except for words
+% such as a, an, and, as, at, but, by, for, in, nor, of, on, or, the, to
+% and up, which are usually not capitalized unless they are the first or
+% last word of the caption. Table text will default to \footnotesize as
+% the IEEE normally uses this smaller font for tables.
+% The \label must come after \caption as always.
+%
+%\begin{table}[!t]
+%% increase table row spacing, adjust to taste
+%\renewcommand{\arraystretch}{1.3}
+% if using array.sty, it might be a good idea to tweak the value of
+% \extrarowheight as needed to properly center the text within the cells
+%\caption{An Example of a Table}
+%\label{table_example}
+%\centering
+%% Some packages, such as MDW tools, offer better commands for making tables
+%% than the plain LaTeX2e tabular which is used here.
+%\begin{tabular}{|c||c|}
+%\hline
+%One & Two\\
+%\hline
+%Three & Four\\
+%\hline
+%\end{tabular}
+%\end{table}
+
+
+% Note that the IEEE does not put floats in the very first column
+% - or typically anywhere on the first page for that matter. Also,
+% in-text middle ("here") positioning is typically not used, but it
+% is allowed and encouraged for Computer Society conferences (but
+% not Computer Society journals). Most IEEE journals/conferences use
+% top floats exclusively.
+% Note that, LaTeX2e, unlike IEEE journals/conferences, places
+% footnotes above bottom floats. This can be corrected via the
+% \fnbelowfloat command of the stfloats package.
+
+
+
+
+\section{Conclusion}
+The conclusion goes here.
+
+
+
+
+
+% if have a single appendix:
+%\appendix[Proof of the Zonklar Equations]
+% or
+%\appendix  % for no appendix heading
+% do not use \section anymore after \appendix, only \section*
+% is possibly needed
+
+% use appendices with more than one appendix
+% then use \section to start each appendix
+% you must declare a \section before using any
+% \subsection or using \label (\appendices by itself
+% starts a section numbered zero.)
+%
+
+
+\appendices
+\section{Proof of the First Zonklar Equation}
+Appendix one text goes here.
+
+% you can choose not to have a title for an appendix
+% if you want by leaving the argument blank
+\section{}
+Appendix two text goes here.
+
+
+% use section* for acknowledgment
+\ifCLASSOPTIONcompsoc
+  % The Computer Society usually uses the plural form
+  \section*{Acknowledgments}
+\else
+  % regular IEEE prefers the singular form
+  \section*{Acknowledgment}
+\fi
+
+
+The authors would like to thank...
+
+
+% Can use something like this to put references on a page
+% by themselves when using endfloat and the captionsoff option.
+\ifCLASSOPTIONcaptionsoff
+  \newpage
+\fi
+
+
+
+% trigger a \newpage just before the given reference
+% number - used to balance the columns on the last page
+% adjust value as needed - may need to be readjusted if
+% the document is modified later
+%\IEEEtriggeratref{8}
+% The "triggered" command can be changed if desired:
+%\IEEEtriggercmd{\enlargethispage{-5in}}
+
+% references section
+
+% can use a bibliography generated by BibTeX as a .bbl file
+% BibTeX documentation can be easily obtained at:
+% http://mirror.ctan.org/biblio/bibtex/contrib/doc/
+% The IEEEtran BibTeX style support page is at:
+% http://www.michaelshell.org/tex/ieeetran/bibtex/
+%\bibliographystyle{IEEEtran}
+% argument is your BibTeX string definitions and bibliography database(s)
+%\bibliography{IEEEabrv,../bib/paper}
+%
+% <OR> manually copy in the resultant .bbl file
+% set second argument of \begin to the number of references
+% (used to reserve space for the reference number labels box)
+\begin{thebibliography}{1}
+
+\bibitem{IEEEhowto:kopka}
+H.~Kopka and P.~W. Daly, \emph{A Guide to \LaTeX}, 3rd~ed.\hskip 1em plus
+  0.5em minus 0.4em\relax Harlow, England: Addison-Wesley, 1999.
+
+\end{thebibliography}
+
+% biography section
+%
+% If you have an EPS/PDF photo (graphicx package needed) extra braces are
+% needed around the contents of the optional argument to biography to prevent
+% the LaTeX parser from getting confused when it sees the complicated
+% \includegraphics command within an optional argument. (You could create
+% your own custom macro containing the \includegraphics command to make things
+% simpler here.)
+%\begin{IEEEbiography}[{\includegraphics[width=1in,height=1.25in,clip,keepaspectratio]{mshell}}]{Michael Shell}
+% or if you just want to reserve a space for a photo:
+
+\begin{IEEEbiography}{Michael Shell}
+Biography text here.
+\end{IEEEbiography}
+
+% if you will not have a photo at all:
+\begin{IEEEbiographynophoto}{John Doe}
+Biography text here.
+\end{IEEEbiographynophoto}
+
+% insert where needed to balance the two columns on the last page with
+% biographies
+%\newpage
+
+\begin{IEEEbiographynophoto}{Jane Doe}
+Biography text here.
+\end{IEEEbiographynophoto}
+
+% You can push biographies down or up by placing
+% a \vfill before or after them. The appropriate
+% use of \vfill depends on what kind of text is
+% on the last page and whether or not the columns
+% are being equalized.
+
+%\vfill
+
+% Can be used to pull up biographies so that the bottom of the last one
+% is flush with the other column.
+%\enlargethispage{-5in}
+
+
+
+% that's all folks
+\end{document}
+
+
